@@ -1,8 +1,24 @@
-import { Human } from "./user";
 
-document.write("Hello World!");
+import {interval} from "rxjs"
+import { createUI } from "./UI/ui";
+import { Game } from "./Models/game";
 
-let Marko = new Human("Marko", "aaa@gmail.com" );
-let Ivan = new Human("Ivan", "assdawdaa@gmail.com" );
+createUI();
 
-console.log(Marko,Ivan);
+
+function GetrandomNumber(){
+    return Math.round( Math.random() * 100);
+
+}
+
+console.log(GetrandomNumber());
+let gamemanager = new Game();
+gamemanager.fetchQuestions();
+setTimeout(()=>{gamemanager.generateQuestionsAndAnswers(2);
+    gamemanager.generateQuestionsAndAnswers(1);
+    gamemanager.generateQuestionsAndAnswers(0);
+},1000);
+
+
+
+interval(500);
